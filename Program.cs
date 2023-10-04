@@ -4,12 +4,10 @@
 //82 -> 10
 //9012 -> 12
 
-Console.Write("Введите число A: ");
-int a = Convert.ToInt32(Console.ReadLine());
-int len = Length(a);
-Console.Write($"Сумма цифр в числе {a} равно: {Sum(a,len)}");
-
-int Length(int a)
+int number = ReadInt("Введите число: ");
+int len = NumberLen(number);
+SumNumbers(number, len);
+int NumberLen(int a)
 {
 int index = 0;
 while (a > 0)
@@ -19,13 +17,18 @@ index++;
 }
 return index;
 }
-int Sum(int a, int len)
+void SumNumbers(int n, int len)
 {
 int sum = 0;
 for (int i = 1; i <= len; i++)
 {
-sum += a % 10;
-a /= 10;
+sum += n % 10;
+n /= 10;
 }
-return sum;
+Console.WriteLine($"сумма цифр {sum}");
+}
+int ReadInt(string message)
+{
+Console.Write(message);
+return Convert.ToInt32(Console.ReadLine());
 }
